@@ -1,0 +1,6 @@
+__pycache__/
+.fleet/
+.idea/
+config.toml
+bot.token
+encryption.key
