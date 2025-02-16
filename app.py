@@ -55,9 +55,10 @@ def load_bot_token():
     return 'default_token'  # Replace with your actual bot token
 
 # Initialize the counter if the file doesn't exist
-if not os.path.exists(counter_file):
-    with open(counter_file, 'w') as f:
-        json.dump({}, f)
+def init_counter_file():
+    if not os.path.exists(counter_file):
+        with open(counter_file, 'w') as f:
+            json.dump({}, f)
 
 # Function to read counter value from file with fcntl locking
 def get_counter():
@@ -149,4 +150,5 @@ def counter():
     return jsonify(dict(get_counter()))
 
 if __name__ == '__main__':
+    init_counter_file()
     app.run(debug=True)
